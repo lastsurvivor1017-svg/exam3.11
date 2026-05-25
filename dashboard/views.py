@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from .services import complaint_by_category
 from accounts.models import User
 from complaints.models import Complaint
 from marketplace.models import Order
@@ -18,3 +18,12 @@ class DashboardStatsView(APIView):
         }
 
         return Response(data)
+    
+
+class DashboardStatsView(APIView):
+    def get(self, request):
+        return Response({
+            "total_users": User.objects.count(),
+            "total_complaints": Complaint.objects.count(),
+            "by_category": complaint_by_category(),
+        })
