@@ -5,6 +5,7 @@ urlpatterns = [
     path('complaints/', include('complaints.urls')),
     path('marketplace/', include('marketplace.urls')),
     path('dashboard/', include('dashboard.urls')),
-    path('ai/', include('ai_system.urls')),
     path('map/', include('map.urls')),
+    path('ai/', include('ai_system.urls')),
+    path('social/', include('social.urls')),
 ]
