@@ -6,6 +6,7 @@ urlpatterns = [
     path('marketplace/', include('marketplace.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('map/', include('map.urls')),
-    path('ai/', include('ai_system.urls')),
     path('social/', include('social.urls')),
+    path('ai/', include('ai_system.urls')),
+    path('payments/', include('payments.urls')),
 ]
