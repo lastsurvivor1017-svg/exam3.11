@@ -22,8 +22,5 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('marketplace/', include('marketplace.urls')),
     path('', include('dashboard.urls')),
-    path('ai/', include('ai_system.urls')),
-    path('complaints/', include('complaints.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

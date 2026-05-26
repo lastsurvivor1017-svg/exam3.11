@@ -6,11 +6,9 @@ from .services import simple_chatbot_response
 
 class ChatBotView(APIView):
     def post(self, request):
-
         message = request.data.get("message")
-
         response = simple_chatbot_response(message)
-
+        
         return Response({
             "message": message,
             "response": response
