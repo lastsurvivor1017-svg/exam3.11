@@ -15,3 +15,7 @@ class ChatBotView(APIView):
             "message": message,
             "response": response
         })
+    
+
+def ai(request):
+    return render(request, 'ai/ai.html')
