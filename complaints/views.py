@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+
 from .models import Complaint
 from .serializers import ComplaintSerializer
 from ai_system.services import analyze_complaint
@@ -12,17 +13,13 @@ class ComplaintViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-
-def perform_create(self, serializer):
-    text = self.request.data.get("description")
-    analysis = analyze_complaint(text)
-
-    serializer.save(
-        user=self.request.user,
-        category=analysis["category"]
-    )
+        text = self.request.data.get("description")
+        analysis = analyze_complaint(text)
+        
+        serializer.save(
+            user=self.request.user,
+            category=analysis["category"]
+        )
 
 
 def complaints(request):
