@@ -11,5 +11,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.complaints, name='complaints'),
+    path('', views.complaints_page, name='complaints'),
 ]
