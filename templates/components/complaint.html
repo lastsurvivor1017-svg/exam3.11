@@ -34,19 +34,23 @@
           <span>•</span><span>2 hours ago</span>
         </div>
       </div>
-
-      <div class="complaint-card">
+    {% for c in complaints %}
+    <div class="complaint-card">
         <div class="complaint-header">
-          <span class="complaint-type type-water">💧 Water</span>
-          <span class="complaint-status status-progress">🔄 In Progress</span>
+            <span class="complaint-type">🚧 {{ c.title }}</span>
+            <span class="complaint-status">{{ c.status }}</span>
         </div>
-        <div class="complaint-desc">Water supply has been cut since yesterday evening in the Karte-3 area.</div>
-        <div class="complaint-meta">
-          <span class="complaint-id">#SC-1041</span>
-          <span>•</span><span>Karte-3</span>
-          <span>•</span><span>4 hours ago</span>
-        </div>
-      </div>
+
+    <div class="complaint-desc">
+        {{ c.description }}
+    </div>
+
+    <div class="complaint-meta">
+        {{ c.location }} • {{ c.created_at }}
+    </div>
+
+    </div>
+    {% endfor %}
 
       <div class="complaint-card">
         <div class="complaint-header">
