@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <!-- ====== TAXI PAGE ====== -->
+  <div class="page" id="page-taxi">
+    <div class="page-header">
+      <div>
+        <div class="page-header-title">🚕 Online Taxi</div>
+        <div class="page-header-sub">Request a ride across the city</div>
+      </div>
+    </div>
+
+    <div class="taxi-layout">
+      <div class="taxi-map">
+        <div class="taxi-map-grid"></div>
+        <div class="taxi-cars">
+          <div class="taxi-car">🚕</div>
+          <div class="taxi-car">🚕</div>
+          <div class="taxi-car">🚙</div>
+          <div class="taxi-car">🚕</div>
+        </div>
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.15">
+          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#00c8ff" stroke-width="2"/>
+          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#00c8ff" stroke-width="2"/>
+          <line x1="0" y1="30%" x2="100%" y2="70%" stroke="#00c8ff" stroke-width="1.5"/>
+          <line x1="20%" y1="0" x2="80%" y2="100%" stroke="#00c8ff" stroke-width="1"/>
+        </svg>
+        <div style="position:absolute;bottom:20px;right:20px;background:rgba(8,14,26,0.9);border:1px solid var(--card-border);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2)">
+          🟢 4 drivers near you
+        </div>
+      </div>
+
+      <div class="taxi-panel">
+        <div class="card-title">🗺️ Request a Taxi</div>
+        <div class="trip-form">
+          <div class="form-group">
+            <div class="form-label">📍 Your Location</div>
+            <input class="form-input" type="text" value="Shar-e-Now, Kabul" placeholder="Enter your location">
+          </div>
+          <div class="form-group">
+            <div class="form-label">🎯 Destination</div>
+            <input class="form-input" type="text" id="taxi-dest" placeholder="Enter destination">
+          </div>
+          <div class="form-group">
+            <div class="form-label">🚗 Vehicle Type</div>
+            <select class="form-input">
+              <option>Standard Taxi</option>
+              <option>VIP Taxi</option>
+              <option>Family SUV</option>
+            </select>
+          </div>
+
+          <div style="background:rgba(0,200,255,0.05);border:1px solid rgba(0,200,255,0.15);border-radius:10px;padding:12px;font-size:12px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span style="color:var(--text3)">Estimated Distance</span>
+              <span>5.2 km</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span style="color:var(--text3)">Estimated Time</span>
+              <span>18 minutes</span>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span style="color:var(--text3)">Estimated Fare</span>
+              <span style="color:var(--accent);font-weight:700">150 AFN</span>
+            </div>
+          </div>
+
+          <button class="request-btn" onclick="requestTaxi()">🚕 Request Taxi</button>
+          <hr class="divider">
+
+          <div class="card-title" style="margin-top:4px">Nearby Drivers</div>
+
+          <div class="driver-card">
+            <div class="driver-avatar">👨</div>
+            <div>
+              <div class="driver-name">Ahmadshah</div>
+              <div class="driver-meta">Standard Taxi • 0.8km</div>
+              <div class="driver-rating">★★★★★ (4.9)</div>
+            </div>
+          </div>
+
+          <div class="driver-card">
+            <div class="driver-avatar">👨</div>
+            <div>
+              <div class="driver-name">Najibullah</div>
+              <div class="driver-meta">VIP Taxi • 1.2km</div>
+              <div class="driver-rating">★★★★☆ (4.6)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock  %}

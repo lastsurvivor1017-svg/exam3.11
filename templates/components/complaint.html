@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <!-- ====== COMPLAINTS PAGE ====== -->
+  <div class="page" id="page-complaints">
+    <div class="page-header">
+      <div>
+        <div class="page-header-title">📋 City Complaints</div>
+        <div class="page-header-sub">Track and report urban issues</div>
+      </div>
+      <button class="btn-primary">+ File New Complaint</button>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn" onclick="filterComplaints(this,'open')">⏳ Open</button>
+      <button class="filter-btn" onclick="filterComplaints(this,'progress')">🔄 In Progress</button>
+      <button class="filter-btn" onclick="filterComplaints(this,'done')">✅ Resolved</button>
+      <button class="filter-btn">🚧 Roads</button>
+      <button class="filter-btn">💧 Water</button>
+      <button class="filter-btn">⚡ Power</button>
+      <button class="filter-btn">🗑️ Waste</button>
+    </div>
+
+    <div class="complaints-grid">
+      <div class="complaint-card">
+        <div class="complaint-header">
+          <span class="complaint-type type-road">🚧 Road</span>
+          <span class="complaint-status status-open">⏳ Open</span>
+        </div>
+        <div class="complaint-desc">The main road in District 6 is severely damaged and causing vehicle damage.</div>
+        <div class="complaint-meta">
+          <span class="complaint-id">#SC-1042</span>
+          <span>•</span><span>District 6</span>
+          <span>•</span><span>2 hours ago</span>
+        </div>
+      </div>
+
+      <div class="complaint-card">
+        <div class="complaint-header">
+          <span class="complaint-type type-water">💧 Water</span>
+          <span class="complaint-status status-progress">🔄 In Progress</span>
+        </div>
+        <div class="complaint-desc">Water supply has been cut since yesterday evening in the Karte-3 area.</div>
+        <div class="complaint-meta">
+          <span class="complaint-id">#SC-1041</span>
+          <span>•</span><span>Karte-3</span>
+          <span>•</span><span>4 hours ago</span>
+        </div>
+      </div>
+
+      <div class="complaint-card">
+        <div class="complaint-header">
+          <span class="complaint-type type-power">⚡ Power</span>
+          <span class="complaint-status status-done">✅ Resolved</span>
+        </div>
+        <div class="complaint-desc">Shar-e-Now experienced a 12-hour power outage, which has since been fixed.</div>
+        <div class="complaint-meta">
+          <span class="complaint-id">#SC-1040</span>
+          <span>•</span><span>Shar-e-Now</span>
+          <span>•</span><span>Yesterday</span>
+        </div>
+      </div>
+
+      <div class="complaint-card">
+        <div class="complaint-header">
+          <span class="complaint-type type-trash">🗑️ Waste</span>
+          <span class="complaint-status status-open">⏳ Open</span>
+        </div>
+        <div class="complaint-desc">Garbage in District 12 has not been collected for weeks.</div>
+        <div class="complaint-meta">
+          <span class="complaint-id">#SC-1039</span>
+          <span>•</span><span>District 12</span>
+          <span>•</span><span>Yesterday</span>
+        </div>
+      </div>
+
+      <div class="complaint-card">
+        <div class="complaint-header">
+          <span class="complaint-type type-road">🚦 Traffic</span>
+          <span class="complaint-status status-progress">🔄 In Progress</span>
+        </div>
+        <div class="complaint-desc">Traffic lights at Chowk Deh Bori have gone dark.</div>
+        <div class="complaint-meta">
+          <span class="complaint-id">#SC-1038</span>
+          <span>•</span><span>Chowk Deh Bori</span>
+          <span>•</span><span>2 days ago</span>
+        </div>
+      </div>
+
+      <div class="complaint-card">
+        <div class="complaint-header">
+          <span class="complaint-type type-water">💧 Water</span>
+          <span class="complaint-status status-done">✅ Resolved</span>
+        </div>
+        <div class="complaint-desc">The main water pipe in Microrayon burst and has been repaired.</div>
+        <div class="complaint-meta">
+          <span class="complaint-id">#SC-1037</span>
+          <span>•</span><span>Microrayon</span>
+          <span>•</span><span>3 days ago</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock  %}

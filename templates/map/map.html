@@ -1,0 +1,90 @@
+
+  <!-- ====== MAP PAGE ====== -->
+  <div class="page" id="page-map">
+    <div class="page-header">
+      <div>
+        <div class="page-header-title">🗺️ City Map</div>
+        <div class="page-header-sub">Key locations in Kabul</div>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <div class="map-view">
+        <div class="map-grid"></div>
+
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.15">
+          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#00c8ff" stroke-width="2"/>
+          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#00c8ff" stroke-width="2"/>
+          <line x1="0" y1="30%" x2="100%" y2="70%" stroke="#00c8ff" stroke-width="1.5"/>
+          <line x1="20%" y1="0" x2="80%" y2="100%" stroke="#00c8ff" stroke-width="1"/>
+        </svg>
+
+        <div class="map-pin hospital-pin" style="top:35%;left:25%">
+          <div class="pin-bubble"><div class="pin-dot"></div>Wazir Akbar Khan Hospital</div>
+        </div>
+        <div class="map-pin hospital-pin" style="top:65%;left:55%">
+          <div class="pin-bubble"><div class="pin-dot"></div>National Hospital</div>
+        </div>
+        <div class="map-pin school-pin" style="top:25%;left:60%">
+          <div class="pin-bubble"><div class="pin-dot"></div>Amani High School</div>
+        </div>
+        <div class="map-pin school-pin" style="top:55%;left:30%">
+          <div class="pin-bubble"><div class="pin-dot"></div>Mirwais School</div>
+        </div>
+        <div class="map-pin police-pin" style="top:45%;left:70%">
+          <div class="pin-bubble"><div class="pin-dot"></div>Police Station</div>
+        </div>
+        <div class="map-pin restaurant-pin" style="top:40%;left:45%">
+          <div class="pin-bubble"><div class="pin-dot"></div>Kabul Restaurant</div>
+        </div>
+        <div class="map-pin fuel-pin" style="top:70%;left:25%">
+          <div class="pin-bubble"><div class="pin-dot"></div>Gas Station</div>
+        </div>
+
+        <!-- Your Location -->
+        <div style="position:absolute;top:50%;left:48%;transform:translate(-50%,-50%)">
+          <div style="width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(0,200,255,0.2),0 0 0 8px rgba(0,200,255,0.1);animation:pulse 2s infinite"></div>
+        </div>
+
+        <div class="map-legend">
+          <div class="legend-title">Legend</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FF1744"></div>Hospital</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FFD600"></div>School</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#1565C0"></div>Police</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FF6B35"></div>Restaurant</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#00C853"></div>Gas Station</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Your Location</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card-title" style="margin-bottom:12px">Categories</div>
+        <div class="map-sidebar-inner">
+          <button class="category-btn active">
+            <span class="category-icon">🏥</span>Hospitals
+            <span class="category-count">18 places</span>
+          </button>
+          <button class="category-btn">
+            <span class="category-icon">🏫</span>Schools
+            <span class="category-count">45 places</span>
+          </button>
+          <button class="category-btn">
+            <span class="category-icon">👮</span>Police
+            <span class="category-count">12 stations</span>
+          </button>
+          <button class="category-btn">
+            <span class="category-icon">🍽️</span>Restaurants
+            <span class="category-count">132 places</span>
+          </button>
+          <button class="category-btn">
+            <span class="category-icon">⛽</span>Gas Stations
+            <span class="category-count">23 places</span>
+          </button>
+          <button class="category-btn">
+            <span class="category-icon">🏦</span>Banks
+            <span class="category-count">28 branches</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

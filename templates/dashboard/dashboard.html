@@ -1,0 +1,89 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <div class="page-scroll">
+
+  <!-- ====== DASHBOARD PAGE ====== -->
+  <div class="page active" id="page-dashboard">
+    <div class="page-header">
+      <div>
+        <div class="page-header-title">Welcome back, Ahmad 👋</div>
+        <div class="page-header-sub">Latest city status — Monday, 2025</div>
+      </div>
+      <button class="btn-primary">+ New Report</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🏘️</div>
+        <div class="stat-value">48,290</div>
+        <div class="stat-label">Active Citizens</div>
+        <div class="stat-change up">↑ 12% this month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-value">327</div>
+        <div class="stat-label">Open Complaints</div>
+        <div class="stat-change down">↑ 8% this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🚕</div>
+        <div class="stat-value">1,456</div>
+        <div class="stat-label">Rides Today</div>
+        <div class="stat-change up">↑ 5% vs yesterday</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🛍️</div>
+        <div class="stat-value">89,400</div>
+        <div class="stat-label">Today's Sales (AFN)</div>
+        <div class="stat-change up">↑ 23% this month</div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card">
+        <div class="card-title">📈 Weekly Activity</div>
+        <div class="chart-bars">
+          <div class="bar-group"><div class="bar primary" style="height:60%"></div><div class="bar-label">Sat</div></div>
+          <div class="bar-group"><div class="bar primary" style="height:80%"></div><div class="bar-label">Sun</div></div>
+          <div class="bar-group"><div class="bar primary" style="height:45%"></div><div class="bar-label">Mon</div></div>
+          <div class="bar-group"><div class="bar primary" style="height:90%"></div><div class="bar-label">Tue</div></div>
+          <div class="bar-group"><div class="bar primary" style="height:70%"></div><div class="bar-label">Wed</div></div>
+          <div class="bar-group"><div class="bar primary" style="height:55%"></div><div class="bar-label">Thu</div></div>
+          <div class="bar-group"><div class="bar secondary" style="height:35%"></div><div class="bar-label">Fri</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 Recent Complaints</div>
+        <div class="complaint-list">
+          <div class="complaint-item">
+            <div class="complaint-dot open"></div>
+            <div class="complaint-text">Road damage — District 6</div>
+            <div class="complaint-time">2 hours ago</div>
+          </div>
+          <div class="complaint-item">
+            <div class="complaint-dot progress"></div>
+            <div class="complaint-text">Water issue — Karte-3</div>
+            <div class="complaint-time">4 hours ago</div>
+          </div>
+          <div class="complaint-item">
+            <div class="complaint-dot done"></div>
+            <div class="complaint-text">Power outage — Shar-e-Now</div>
+            <div class="complaint-time">Yesterday</div>
+          </div>
+          <div class="complaint-item">
+            <div class="complaint-dot open"></div>
+            <div class="complaint-text">Garbage — District 12</div>
+            <div class="complaint-time">Yesterday</div>
+          </div>
+          <div class="complaint-item">
+            <div class="complaint-dot progress"></div>
+            <div class="complaint-text">Traffic — Chowk Deh Bori</div>
+            <div class="complaint-time">2 days ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock  %}

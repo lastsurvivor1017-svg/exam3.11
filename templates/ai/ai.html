@@ -1,0 +1,90 @@
+ <div class="page" id="page-ai">
+    <div class="page-header">
+      <div>
+        <div class="page-header-title">🤖 Smart City Assistant</div>
+        <div class="page-header-sub">Ask about any city service</div>
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-main">
+        <div class="chat-header">
+          <div class="ai-avatar">🤖</div>
+          <div>
+            <div style="font-size:14px;font-weight:600">City AI Assistant</div>
+            <div class="ai-status">Online & Ready</div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <div class="msg ai">
+            <div class="msg-bubble">Hello! I'm the Smart City Assistant. I can help you with city services, nearby locations, traffic updates, and much more. How can I assist you today? 🏙️</div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <div class="quick-suggestions">
+            <button class="suggestion-btn" onclick="sendSuggestion('Where is the nearest hospital?')">🏥 Nearest Hospital</button>
+            <button class="suggestion-btn" onclick="sendSuggestion('How is traffic today?')">🚦 Traffic Status</button>
+            <button class="suggestion-btn" onclick="sendSuggestion('How do I file a complaint?')">📋 File a Complaint</button>
+            <button class="suggestion-btn" onclick="sendSuggestion('Where is the nearest gas station?')">⛽ Gas Station</button>
+          </div>
+          <div class="chat-input-row">
+            <textarea class="chat-input" id="chat-input" rows="1" placeholder="Type your question..." onkeydown="handleChatKey(event)"></textarea>
+            <button class="send-btn" onclick="sendMessage()">➤</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-sidebar">
+        <div class="ai-feature-card">
+          <div class="feature-title">📍 Nearby Services</div>
+          <div class="nearby-item">
+            <span class="nearby-item-icon">🏥</span>
+            <span class="nearby-item-name">Wazir Akbar Khan Hospital</span>
+            <span class="nearby-item-dist">1.2km</span>
+          </div>
+          <div class="nearby-item">
+            <span class="nearby-item-icon">🏫</span>
+            <span class="nearby-item-name">Amani High School</span>
+            <span class="nearby-item-dist">0.8km</span>
+          </div>
+          <div class="nearby-item">
+            <span class="nearby-item-icon">👮</span>
+            <span class="nearby-item-name">Police Station — District 7</span>
+            <span class="nearby-item-dist">2.1km</span>
+          </div>
+          <div class="nearby-item">
+            <span class="nearby-item-icon">⛽</span>
+            <span class="nearby-item-name">Mehwar Gas Station</span>
+            <span class="nearby-item-dist">0.5km</span>
+          </div>
+        </div>
+
+        <div class="ai-feature-card">
+          <div class="feature-title">🚦 Traffic Status</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.7">
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span>Chowk Deh Bori</span><span style="color:var(--danger)">🔴 Heavy</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span>Darulaman Road</span><span style="color:var(--warning)">🟡 Moderate</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0">
+              <span>Bagrami</span><span style="color:var(--success)">🟢 Clear</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-feature-card">
+          <div class="feature-title">🌤️ Today's Weather</div>
+          <div style="text-align:center;padding:8px 0">
+            <div style="font-size:36px;margin-bottom:6px">☀️</div>
+            <div style="font-size:24px;font-weight:700">22°C</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:4px">Sunny — Kabul</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
