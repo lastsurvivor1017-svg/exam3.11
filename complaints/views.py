@@ -15,7 +15,7 @@ class ComplaintViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         text = self.request.data.get("description")
         analysis = analyze_complaint(text)
-        
+
         serializer.save(
             user=self.request.user,
             category=analysis["category"]

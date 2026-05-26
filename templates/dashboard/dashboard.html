@@ -1,9 +1,20 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<script>
+async function loadStats() {
+
+    const response = await fetch('/dashboard/stats/');
+    const data = await response.json();
+
+    document.getElementById('users').innerText = data.total_users;
+    document.getElementById('complaints').innerText = data.total_complaints;
+}
+
+loadStats();
+</script>
   <div class="page-scroll">
 
-  <!-- ====== DASHBOARD PAGE ====== -->
   <div class="page active" id="page-dashboard">
     <div class="page-header">
       <div>
