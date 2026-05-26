@@ -24,7 +24,7 @@
   <div class="nav-section">
     <div class="nav-label">Services</div>
     <div class="nav-item" onclick="showPage('complaints', this)">
-      <span class="nav-icon">📋</span>Complaints
+      <a href="{% url 'complaints' %}" class="nav-item"><span class="nav-icon">📋</span>Complaints </a>
       <span class="nav-badge">12</span>
     </div>
     <div class="nav-item" onclick="showPage('taxi', this)">
