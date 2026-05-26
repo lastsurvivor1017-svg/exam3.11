@@ -1,6 +1,6 @@
 
-<!-- SIDEBAR -->
 <nav class="sidebar">
+
   <div class="sidebar-logo">
     <div class="logo-icon">🏙️</div>
     <div class="logo-text">Smart City</div>
@@ -10,44 +10,49 @@
   <div class="nav-section">
     <div class="nav-label">Main</div>
     <a href="{% url 'dashboard' %}" class="nav-item">
-  <span class="nav-icon">📊</span>Dashboard
+      <span class="nav-icon">📊</span>Dashboard
     </a>
     <a href="{% url 'ai' %}" class="nav-item">
-  <span class="nav-icon">🤖</span>AI Assistant
+      <span class="nav-icon">🤖</span>AI Assistant
     </a>
-    <div class="nav-item" onclick="showPage('news', this)">
+
+    <a href="{% url 'news' %}" class="nav-item">
       <span class="nav-icon">📰</span>City News
       <span class="nav-badge">5</span>
-    </div>
+    </a>
   </div>
 
   <div class="nav-section">
     <div class="nav-label">Services</div>
-    <div class="nav-item" onclick="showPage('complaints', this)">
-      <a href="{% url 'complaints' %}" class="nav-item">
-    <span class="nav-icon">📋</span>Complaints
-    </a>
+
+    <a href="{% url 'complaints' %}" class="nav-item">
+      <span class="nav-icon">📋</span>Complaints
       <span class="nav-badge">12</span>
-    </div>
-    <div class="nav-item" onclick="showPage('taxi', this)">
+    </a>
+
+    <a href="{% url 'taxi' %}" class="nav-item">
       <span class="nav-icon">🚕</span>Online Taxi
-    </div>
-    <div class="nav-item" onclick="showPage('market', this)">
+    </a>
+
+    <a href="{% url 'market' %}" class="nav-item">
       <span class="nav-icon">🛍️</span>City Market
-    </div>
-    <div class="nav-item" onclick="showPage('payment', this)">
+    </a>
+
+    <a href="{% url 'payment' %}" class="nav-item">
       <span class="nav-icon">💳</span>Bill Payments
-    </div>
+    </a>
   </div>
 
   <div class="nav-section">
     <div class="nav-label">Community</div>
-    <div class="nav-item" onclick="showPage('social', this)">
+
+    <a href="{% url 'social' %}" class="nav-item">
       <span class="nav-icon">👥</span>Social Network
-    </div>
-    <div class="nav-item" onclick="showPage('map', this)">
+    </a>
+
+    <a href="{% url 'map' %}" class="nav-item">
       <span class="nav-icon">🗺️</span>City Map
-    </div>
+    </a>
   </div>
 
   <div class="sidebar-user">
@@ -58,4 +63,5 @@
     </div>
     <span style="margin-left:auto;font-size:16px;color:var(--text3);cursor:pointer">⚙️</span>
   </div>
+
 </nav>
