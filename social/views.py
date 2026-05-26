@@ -10,11 +10,8 @@ from .serializers import (
 
 
 class PostViewSet(viewsets.ModelViewSet):
-
     queryset = Post.objects.all().order_by('-created_at')
-
     serializer_class = PostSerializer
-
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
@@ -23,11 +20,8 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 class CommentViewSet(viewsets.ModelViewSet):
-
     queryset = Comment.objects.all().order_by('-created_at')
-
     serializer_class = CommentSerializer
-
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
@@ -36,11 +30,8 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class LikeViewSet(viewsets.ModelViewSet):
-
     queryset = Like.objects.all()
-
     serializer_class = LikeSerializer
-
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):

@@ -9,13 +9,14 @@ from marketplace.models import Order
 
 class DashboardStatsView(APIView):
     def get(self, request):
-        data = {
+        return Response({
             "total_users": User.objects.count(),
             "total_complaints": Complaint.objects.count(),
             "pending_complaints": Complaint.objects.filter(status="pending").count(),
             "resolved_complaints": Complaint.objects.filter(status="resolved").count(),
             "total_orders": Order.objects.count(),
-        }
+            "by_category": complaint_by_category(),
+        })
 
         return Response(data)
     
