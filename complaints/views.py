@@ -23,3 +23,7 @@ def perform_create(self, serializer):
         user=self.request.user,
         category=analysis["category"]
     )
+
+
+def complaints(request):
+    return render(request, 'complaints/complaints.html')

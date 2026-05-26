@@ -6,3 +6,10 @@ router = DefaultRouter()
 router.register('', ComplaintViewSet)
 
 urlpatterns = router.urls
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.complaints, name='complaints'),
+]
