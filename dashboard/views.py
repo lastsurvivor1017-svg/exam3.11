@@ -27,3 +27,9 @@ class DashboardStatsView(APIView):
             "total_complaints": Complaint.objects.count(),
             "by_category": complaint_by_category(),
         })
+    
+
+
+
+def dashboard(request):
+    return render(request, 'dashboard/dashboard.html')
