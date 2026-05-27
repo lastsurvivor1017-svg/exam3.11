@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import generics
 from .serializers import RegisterSerializer
 from .models import User
@@ -7,6 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from rest_framework import status
+from django.contrib.auth import login, logout, authenticate
+
 
 
 class RegisterView(APIView):
@@ -49,3 +51,8 @@ class LoginView(APIView):
             }, status=200)
 
         return Response({"error": "Invalid credentials"}, status=400)
+    
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
