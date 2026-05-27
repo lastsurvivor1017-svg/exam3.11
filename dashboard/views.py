@@ -34,3 +34,13 @@ class DashboardStatsView(APIView):
 
 def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
+
+
+
+def news(request):
+    return render(request, 'dashboard/news.html')
+
+from django.shortcuts import render
+
+def taxi(request):
+    return render(request, 'taxi.html')
