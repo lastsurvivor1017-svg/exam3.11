@@ -1,0 +1,354 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart City | Sign In</title>
+<style>
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+<div class="bg-glow g3"></div>
+
+<!-- City skyline SVG -->
+<svg class="city-silhouette" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(0,200,255,0.8)">
+  <rect x="0" y="60" width="30" height="60"/>
+  <rect x="35" y="40" width="25" height="80"/>
+  <rect x="65" y="50" width="20" height="70"/>
+  <rect x="90" y="20" width="35" height="100"/>
+  <rect x="92" y="10" width="10" height="12"/>
+  <rect x="130" y="35" width="28" height="85"/>
+  <rect x="163" y="55" width="18" height="65"/>
+  <rect x="185" y="25" width="40" height="95"/>
+  <rect x="200" y="15" width="12" height="12"/>
+  <rect x="230" y="45" width="22" height="75"/>
+  <rect x="257" y="30" width="32" height="90"/>
+  <rect x="294" y="50" width="24" height="70"/>
+  <rect x="323" y="15" width="38" height="105"/>
+  <rect x="326" y="5" width="8" height="12"/>
+  <rect x="366" y="40" width="26" height="80"/>
+  <rect x="397" y="55" width="20" height="65"/>
+  <rect x="422" y="28" width="44" height="92"/>
+  <rect x="436" y="18" width="14" height="12"/>
+  <rect x="471" y="45" width="22" height="75"/>
+  <rect x="498" y="20" width="36" height="100"/>
+  <rect x="539" y="50" width="18" height="70"/>
+  <rect x="562" y="35" width="30" height="85"/>
+  <rect x="597" y="10" width="42" height="110"/>
+  <rect x="604" y="0"  width="10" height="12"/>
+  <rect x="644" y="40" width="24" height="80"/>
+  <rect x="673" y="55" width="20" height="65"/>
+  <rect x="698" y="25" width="36" height="95"/>
+  <rect x="739" y="45" width="22" height="75"/>
+  <rect x="766" y="30" width="34" height="90"/>
+  <rect x="805" y="50" width="20" height="70"/>
+  <rect x="830" y="18" width="40" height="102"/>
+  <rect x="838" y="8"  width="10" height="12"/>
+  <rect x="875" y="42" width="26" height="78"/>
+  <rect x="906" y="55" width="18" height="65"/>
+  <rect x="929" y="28" width="38" height="92"/>
+  <rect x="972" y="48" width="22" height="72"/>
+  <rect x="999" y="22" width="34" height="98"/>
+  <rect x="1038" y="52" width="20" height="68"/>
+  <rect x="1063" y="35" width="30" height="85"/>
+  <rect x="1098" y="15" width="40" height="105"/>
+  <rect x="1104" y="5"  width="10" height="12"/>
+  <rect x="1143" y="42" width="24" height="78"/>
+  <rect x="1172" y="55" width="28" height="65"/>
+</svg>
+
+<div class="auth-wrapper">
+  <!-- Logo -->
+  <div class="auth-logo">
+    <span class="logo-icon">🏙️</span>
+    <div class="logo-title">SMART CITY</div>
+    <div class="logo-sub">Urban Management System</div>
+  </div>
+
+  <!-- Card -->
+  <div class="auth-card">
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">🔑 Sign In</button>
+      <button class="tab-btn" id="tab-register" onclick="switchTab('register')">🏙️ Register</button>
+    </div>
+
+    <!-- ===== LOGIN ===== -->
+    <div class="auth-page active" id="page-login">
+      <div class="auth-heading">Welcome back 👋</div>
+      <div class="auth-subheading">Sign in to access city services</div>
+
+      <div class="alert error" id="login-error">
+        <span>⚠️</span><span id="login-error-msg">Invalid credentials</span>
+      </div>
+      <div class="alert success" id="login-success">
+        <span>✅</span><span>Login successful! Redirecting...</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input class="form-input" type="email" id="login-email" placeholder="your@email.com" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          Password
+          <a class="forgot-link" onclick="showForgot()">Forgot password?</a>
+        </label>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input class="form-input" type="password" id="login-password" placeholder="Enter your password" autocomplete="current-password">
+          <button class="eye-btn" onclick="togglePwd('login-password', this)" type="button">👁️</button>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="login-btn" onclick="handleLogin()">Sign In</button>
+
+      <div class="switch-text">
+        Don't have an account? <a onclick="switchTab('register')">Register now</a>
+      </div>
+    </div>
+
+    <!-- ===== REGISTER ===== -->
+    <div class="auth-page" id="page-register">
+      <div class="auth-heading">Create account 🏙️</div>
+      <div class="auth-subheading">Join the Smart City community</div>
+
+      <div class="alert error" id="register-error">
+        <span>⚠️</span><span id="register-error-msg">An error occurred</span>
+      </div>
+      <div class="alert success" id="register-success">
+        <span>✅</span><span>Account created successfully! Please sign in.</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <div class="input-wrap">
+          <span class="input-icon">👤</span>
+          <input class="form-input" type="text" id="reg-name" placeholder="Ahmad Rahimi" autocomplete="name">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input class="form-input" type="email" id="reg-email" placeholder="your@email.com" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input class="form-input" type="password" id="reg-password" placeholder="Minimum 8 characters" autocomplete="new-password" oninput="checkStrength(this.value)">
+          <button class="eye-btn" onclick="togglePwd('reg-password', this)" type="button">👁️</button>
+        </div>
+        <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+        <div class="strength-text" id="strength-text"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Confirm Password</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input class="form-input" type="password" id="reg-confirm" placeholder="Repeat password" autocomplete="new-password">
+          <button class="eye-btn" onclick="togglePwd('reg-confirm', this)" type="button">👁️</button>
+        </div>
+      </div>
+
+      <div class="terms-row">
+        <input type="checkbox" id="terms-check">
+        <label for="terms-check">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      </div>
+
+      <button class="submit-btn" id="register-btn" onclick="handleRegister()" style="margin-top:20px">Create Account</button>
+
+      <div class="switch-text">
+        Already have an account? <a onclick="switchTab('login')">Sign in</a>
+      </div>
+    </div>
+
+  </div><!-- /auth-card -->
+
+  <div class="auth-footer">
+    🔒 Your data is encrypted and secure &nbsp;•&nbsp; Smart City © 2025
+  </div>
+</div>
+
+<script>
+const API_BASE = '';
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.auth-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('page-' + tab).classList.add('active');
+  hideAlerts();
+}
+
+function hideAlerts() {
+  document.querySelectorAll('.alert').forEach(a => a.classList.remove('show'));
+}
+
+function showAlert(id, show=true) {
+  document.getElementById(id).classList.toggle('show', show);
+}
+
+function togglePwd(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁️' : '🙈';
+}
+
+function checkStrength(val) {
+  const fill = document.getElementById('strength-fill');
+  const text = document.getElementById('strength-text');
+  let score = 0;
+  if (val.length >= 8)  score++;
+  if (/[A-Z]/.test(val)) score++;
+  if (/[0-9]/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+  const levels = [
+    { pct: '0%',   color: '',        label: '' },
+    { pct: '25%',  color: '#ff1744', label: 'Weak' },
+    { pct: '50%',  color: '#ffab00', label: 'Fair' },
+    { pct: '75%',  color: '#00b0ff', label: 'Good' },
+    { pct: '100%', color: '#00c853', label: 'Strong 💪' },
+  ];
+  fill.style.width    = levels[score].pct;
+  fill.style.background = levels[score].color;
+  text.textContent    = val ? levels[score].label : '';
+  text.style.color    = levels[score].color;
+}
+
+function setLoading(btnId, loading) {
+  const btn = document.getElementById(btnId);
+  if (loading) {
+    btn.classList.add('loading');
+    btn.innerHTML = '<span class="spinner"></span> Please wait...';
+  } else {
+    btn.classList.remove('loading');
+  }
+}
+
+async function handleLogin() {
+  hideAlerts();
+  const email    = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+
+  if (!email || !password) {
+    document.getElementById('login-error-msg').textContent = 'Please fill in all fields.';
+    showAlert('login-error');
+    return;
+  }
+
+  setLoading('login-btn', true);
+  document.getElementById('login-btn').textContent || null;
+
+  try {
+    const res = await fetch(API_BASE + '/api/auth/login/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      showAlert('login-success');
+      // Store user info and redirect
+      localStorage.setItem('user', JSON.stringify(data.user));
+      setTimeout(() => { window.location.href = '/'; }, 1500);
+    } else {
+      document.getElementById('login-error-msg').textContent = data.error || 'Login failed.';
+      showAlert('login-error');
+      setLoading('login-btn', false);
+      document.getElementById('login-btn').textContent = 'Sign In';
+    }
+  } catch (err) {
+    document.getElementById('login-error-msg').textContent = 'Network error. Please try again.';
+    showAlert('login-error');
+    setLoading('login-btn', false);
+    document.getElementById('login-btn').textContent = 'Sign In';
+  }
+}
+
+async function handleRegister() {
+  hideAlerts();
+  const full_name = document.getElementById('reg-name').value.trim();
+  const email     = document.getElementById('reg-email').value.trim();
+  const password  = document.getElementById('reg-password').value;
+  const confirm   = document.getElementById('reg-confirm').value;
+  const terms     = document.getElementById('terms-check').checked;
+
+  if (!full_name || !email || !password || !confirm) {
+    document.getElementById('register-error-msg').textContent = 'Please fill in all fields.';
+    showAlert('register-error');
+    return;
+  }
+  if (password !== confirm) {
+    document.getElementById('register-error-msg').textContent = 'Passwords do not match.';
+    showAlert('register-error');
+    return;
+  }
+  if (password.length < 8) {
+    document.getElementById('register-error-msg').textContent = 'Password must be at least 8 characters.';
+    showAlert('register-error');
+    return;
+  }
+  if (!terms) {
+    document.getElementById('register-error-msg').textContent = 'Please accept the terms and conditions.';
+    showAlert('register-error');
+    return;
+  }
+
+  setLoading('register-btn', true);
+
+  try {
+    const res = await fetch(API_BASE + '/api/auth/register/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ full_name, email, password })
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      showAlert('register-success');
+      setTimeout(() => switchTab('login'), 2000);
+    } else {
+      document.getElementById('register-error-msg').textContent = data.error || 'Registration failed.';
+      showAlert('register-error');
+      setLoading('register-btn', false);
+      document.getElementById('register-btn').textContent = 'Create Account';
+    }
+  } catch (err) {
+    document.getElementById('register-error-msg').textContent = 'Network error. Please try again.';
+    showAlert('register-error');
+    setLoading('register-btn', false);
+    document.getElementById('register-btn').textContent = 'Create Account';
+  }
+}
+
+function showForgot() {
+  alert('📧 A password reset link will be sent to your email address.');
+}
+
+// Enter key support
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const loginActive = document.getElementById('page-login').classList.contains('active');
+  if (loginActive) handleLogin();
+  else handleRegister();
+});
+</script>
+</body>
+</html>

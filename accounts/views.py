@@ -31,15 +31,11 @@ class RegisterView(APIView):
 
 
 
-User = get_user_model()
-
 
 class LoginView(APIView):
     def post(self, request):
-
         email = request.data.get("email")
         password = request.data.get("password")
-
         user = authenticate(request, email=email, password=password)
 
         if user:
@@ -50,6 +46,6 @@ class LoginView(APIView):
                     "email": user.email,
                     "role": user.role
                 }
-            })
+            }, status=200)
 
         return Response({"error": "Invalid credentials"}, status=400)

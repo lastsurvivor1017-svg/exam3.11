@@ -133,6 +133,10 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'accounts.User'
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailBackend',
+]
+
 
 REST_FRAMEWORK = {
 
