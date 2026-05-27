@@ -1,0 +1,343 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<div class="auth-page" id="page-register">
+  
+  <div class="auth-heading">Create account 🏙️</div>
+  <div class="auth-subheading">
+    Join the Smart City community
+  </div>
+
+  <!-- Error Alert -->
+  <div class="alert error" id="register-error">
+    <span>⚠️</span>
+    <span id="register-error-msg">An error occurred</span>
+  </div>
+
+  <!-- Success Alert -->
+  <div class="alert success" id="register-success">
+    <span>✅</span>
+    <span>Account created successfully! Please sign in.</span>
+  </div>
+
+  <!-- Full Name -->
+  <div class="form-group">
+    <label class="form-label">Full Name</label>
+
+    <div class="input-wrap">
+      <span class="input-icon">👤</span>
+
+      <input
+        class="form-input"
+        type="text"
+        id="reg-name"
+        placeholder="Ahmad Rahimi"
+        autocomplete="name"
+      >
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label class="form-label">Email Address</label>
+
+    <div class="input-wrap">
+      <span class="input-icon">✉️</span>
+
+      <input
+        class="form-input"
+        type="email"
+        id="reg-email"
+        placeholder="your@email.com"
+        autocomplete="email"
+      >
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <label class="form-label">Password</label>
+
+    <div class="input-wrap">
+      <span class="input-icon">🔒</span>
+
+      <input
+        class="form-input"
+        type="password"
+        id="reg-password"
+        placeholder="Minimum 8 characters"
+        autocomplete="new-password"
+        oninput="checkStrength(this.value)"
+      >
+
+      <button
+        class="eye-btn"
+        type="button"
+        onclick="togglePwd('reg-password', this)"
+      >
+        👁️
+      </button>
+    </div>
+
+    <!-- Password Strength -->
+    <div class="strength-bar">
+      <div class="strength-fill" id="strength-fill"></div>
+    </div>
+
+    <div class="strength-text" id="strength-text"></div>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="form-group">
+    <label class="form-label">Confirm Password</label>
+
+    <div class="input-wrap">
+      <span class="input-icon">🔒</span>
+
+      <input
+        class="form-input"
+        type="password"
+        id="reg-confirm"
+        placeholder="Repeat password"
+        autocomplete="new-password"
+      >
+
+      <button
+        class="eye-btn"
+        type="button"
+        onclick="togglePwd('reg-confirm', this)"
+      >
+        👁️
+      </button>
+    </div>
+  </div>
+
+  <!-- Terms -->
+  <div class="terms-row">
+    <input type="checkbox" id="terms-check">
+
+    <label for="terms-check">
+      I agree to the
+      <a href="#">Terms of Service</a>
+      and
+      <a href="#">Privacy Policy</a>
+    </label>
+  </div>
+
+  <!-- Submit -->
+  <button
+    class="submit-btn"
+    id="register-btn"
+    onclick="handleRegister()"
+    style="margin-top:20px"
+  >
+    Create Account
+  </button>
+
+  <!-- Switch -->
+  <div class="switch-text">
+    Already have an account?
+    <a onclick="switchTab('login')">Sign in</a>
+  </div>
+
+</div>
+
+<script>
+
+const API_BASE = '';
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  document.querySelectorAll('.auth-page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('page-' + tab).classList.add('active');
+
+  hideAlerts();
+}
+
+function hideAlerts() {
+  document.querySelectorAll('.alert').forEach(alert => {
+    alert.classList.remove('show');
+  });
+}
+
+function showAlert(id, show = true) {
+  document.getElementById(id).classList.toggle('show', show);
+}
+
+function togglePwd(inputId, btn) {
+  const input = document.getElementById(inputId);
+
+  input.type = input.type === 'password'
+    ? 'text'
+    : 'password';
+
+  btn.textContent = input.type === 'password'
+    ? '👁️'
+    : '🙈';
+}
+
+function checkStrength(val) {
+
+  const fill = document.getElementById('strength-fill');
+  const text = document.getElementById('strength-text');
+
+  let score = 0;
+
+  if (val.length >= 8) score++;
+  if (/[A-Z]/.test(val)) score++;
+  if (/[0-9]/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+
+  const levels = [
+    { pct: '0%', color: '', label: '' },
+    { pct: '25%', color: '#ff1744', label: 'Weak' },
+    { pct: '50%', color: '#ffab00', label: 'Fair' },
+    { pct: '75%', color: '#00b0ff', label: 'Good' },
+    { pct: '100%', color: '#00c853', label: 'Strong 💪' }
+  ];
+
+  fill.style.width = levels[score].pct;
+  fill.style.background = levels[score].color;
+
+  text.textContent = val ? levels[score].label : '';
+  text.style.color = levels[score].color;
+}
+
+function setLoading(btnId, loading) {
+
+  const btn = document.getElementById(btnId);
+
+  if (loading) {
+    btn.classList.add('loading');
+    btn.innerHTML =
+      '<span class="spinner"></span> Please wait...';
+  } else {
+    btn.classList.remove('loading');
+  }
+}
+
+async function handleRegister() {
+
+  hideAlerts();
+
+  const full_name =
+    document.getElementById('reg-name').value.trim();
+
+  const email =
+    document.getElementById('reg-email').value.trim();
+
+  const password =
+    document.getElementById('reg-password').value;
+
+  const confirm =
+    document.getElementById('reg-confirm').value;
+
+  const terms =
+    document.getElementById('terms-check').checked;
+
+  // Validation
+  if (!full_name || !email || !password || !confirm) {
+
+    document.getElementById('register-error-msg').textContent =
+      'Please fill in all fields.';
+
+    showAlert('register-error');
+    return;
+  }
+
+  if (password !== confirm) {
+
+    document.getElementById('register-error-msg').textContent =
+      'Passwords do not match.';
+
+    showAlert('register-error');
+    return;
+  }
+
+  if (password.length < 8) {
+
+    document.getElementById('register-error-msg').textContent =
+      'Password must be at least 8 characters.';
+
+    showAlert('register-error');
+    return;
+  }
+
+  if (!terms) {
+
+    document.getElementById('register-error-msg').textContent =
+      'Please accept the terms and conditions.';
+
+    showAlert('register-error');
+    return;
+  }
+
+  setLoading('register-btn', true);
+
+  try {
+
+    const res = await fetch(
+      API_BASE + '/api/auth/register/',
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          full_name,
+          email,
+          password
+        })
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+
+      showAlert('register-success');
+
+      setTimeout(() => {
+        switchTab('login');
+      }, 2000);
+
+    } else {
+
+      document.getElementById('register-error-msg').textContent =
+        data.error || 'Registration failed.';
+
+      showAlert('register-error');
+
+      setLoading('register-btn', false);
+
+      document.getElementById('register-btn').textContent =
+        'Create Account';
+    }
+
+  } catch (err) {
+
+    document.getElementById('register-error-msg').textContent =
+      'Network error. Please try again.';
+
+    showAlert('register-error');
+
+    setLoading('register-btn', false);
+
+    document.getElementById('register-btn').textContent =
+      'Create Account';
+  }
+}
+
+</script>
+
+{% endblock %}
