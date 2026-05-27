@@ -11,8 +11,12 @@ class PaymentViewSet(viewsets.ModelViewSet):
     serializer_class = PaymentSerializer
     def perform_create(self, serializer):
         status = process_payment()
-        
+
         serializer.save(
             reference_id=generate_reference(),
             status=status
         )
+
+
+def payment(request):
+    return render(request, 'payments/payments.html')

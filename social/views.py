@@ -1,12 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-
+from django.shortcuts import render
 from .models import Post, Comment, Like
-from .serializers import (
-    PostSerializer,
-    CommentSerializer,
-    LikeSerializer
-)
+from .serializers import PostSerializer,CommentSerializer,LikeSerializer
+
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -37,3 +34,7 @@ class LikeViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
 
         serializer.save(user=self.request.user)
+
+
+def social(request):
+    return render(request, 'social/social.html')
