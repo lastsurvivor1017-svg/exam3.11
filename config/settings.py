@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'api',
     'taxi',
     'news',
+    'notifications',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

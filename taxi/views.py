@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import render
-
+from notifications.models import Notification
 from .models import Ride
 from .serializers import RideSerializer
 from .services import calculate_price
@@ -17,6 +17,12 @@ class RideViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         distance = float(self.request.data.get('distance_km', 1))
         price = calculate_price(distance)
+        Notification.objects.create(
+            user=self.request.user,
+            title="Taxi Requested",
+            message="Your taxi request was created.",
+            notification_type="taxi"
+        )
         serializer.save(user=self.request.user,price=price)
 
     @action(detail=True, methods=['POST'])

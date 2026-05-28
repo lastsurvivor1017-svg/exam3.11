@@ -4,6 +4,8 @@ from django.shortcuts import render
 from .models import News
 from .serializers import NewsSerializer
 from .permissions import IsAdminUserRole
+from accounts.models import User
+from notifications.models import Notification
 
 
 class NewsViewSet(viewsets.ModelViewSet):
@@ -14,7 +16,16 @@ class NewsViewSet(viewsets.ModelViewSet):
             return [IsAdminUserRole()]
         return [IsAuthenticatedOrReadOnly()]
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        news = serializer.save(author=self.request.user)
+        users = User.objects.all()
+
+        for user in users:
+            Notification.objects.create(
+                user=user,
+                title="📰 New City News",
+                message=news.title,
+                notification_type="news"
+            )
 
 
 def news_page(request):

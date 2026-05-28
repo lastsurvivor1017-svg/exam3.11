@@ -4,6 +4,7 @@ from .models import Payment
 from .serializers import PaymentSerializer
 from .services import generate_reference, process_payment
 from django.shortcuts import render
+from notifications.models import Notification
 
 
 
@@ -13,6 +14,14 @@ class PaymentViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     def perform_create(self, serializer):
         payment_status = process_payment()
+        
+        Notification.objects.create(
+        user=self.request.user,
+        title="Payment Successful",
+        message="Your payment completed successfully.",
+        notification_type="payment"
+        
+        )
         serializer.save(
             reference_id=generate_reference(),
             status=payment_status
