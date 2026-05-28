@@ -1,16 +1,33 @@
- <div class="topbar">
+<div class="topbar">
     <div class="topbar-title" id="topbar-title">Main Dashboard</div>
-    <div class="topbar-search">
-      <span>🔍</span>
-      <input type="text" placeholder="Search the city...">
-    </div>
-    <div class="topbar-actions">
-      <div class="icon-btn">
-        🔔
-        <span class="notif-dot"></span>
-      </div>
-      <div class="icon-btn">💬</div>
-      <div class="icon-btn">👤</div>
-    </div>
-  </div>
 
+    <div class="topbar-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search the city...">
+    </div>
+
+    <div class="topbar-actions">
+        {% if user.is_authenticated %}
+            <div class="icon-btn">
+                <a href="{% url 'notifications' %}" class="nav-item">
+                    <span class="nav-icon">🔔</span>
+                </a>
+                <span class="notif-dot"></span>
+            </div>
+            <div class="icon-btn">
+                <a href="{% url 'logout' %}">
+                    🚪
+                </a>
+            </div>
+        {% else %}
+
+            <div class="icon-btn">
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+            <div class="icon-btn">
+                <a href="{% url 'register' %}">Register</a>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
