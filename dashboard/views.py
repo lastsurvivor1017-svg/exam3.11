@@ -20,16 +20,8 @@ class DashboardStatsView(APIView):
             "by_category": complaint_by_category(),
         })
 
-        return Response(data)
     
 
-class DashboardStatsView(APIView):
-    def get(self, request):
-        return Response({
-            "total_users": User.objects.count(),
-            "total_complaints": Complaint.objects.count(),
-            "by_category": complaint_by_category(),
-        })
     
 
 
