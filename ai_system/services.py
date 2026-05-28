@@ -1,6 +1,35 @@
+from map.models import Place
+
+
+
+def get_nearest_place(lat, lng, category=None):
+    places = Place.objects.all()
+    return places.first()
+
+
+def smart_ai(message):
+    msg = message.lower()
+
+    if "hospital" in msg:
+        place = get_nearest_place(0,0,"hospital")
+        return {
+            "answer": f"Nearest hospital is {place.name}",
+            "type": "map_location"
+        }
+
+    if "taxi" in msg:
+        return {
+            "answer": "Open taxi system",
+            "type": "action"
+        }
+
+    return {
+        "answer": "I don't understand",
+        "type": "text"
+    }
+
 def simple_chatbot_response(message):
     message = message.lower()
-
     if "hospital" in message:
         return "The nearest hospital can be viewed in the Maps section."
 
