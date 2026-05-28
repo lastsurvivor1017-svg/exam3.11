@@ -31,14 +31,14 @@ def dashboard(request):
     complaints = Complaint.objects.count()
     orders = Order.objects.count()
 
-    return render(request, "dashboard.html", {
+    return render(request, "dashboard/dashboard.html", {
         "users": users,
         "complaints": complaints,
         "orders": orders,})
 def news(request):
-    return render(request, 'dashboard/news.html')
+    return render(request, 'news/news.html')
 
 from django.shortcuts import render
 
 def taxi(request):
-    return render(request, 'taxi.html')
+    return render(request, 'taxi/taxi.html')

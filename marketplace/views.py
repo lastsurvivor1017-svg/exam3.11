@@ -23,4 +23,4 @@ class OrderViewSet(viewsets.ModelViewSet):
 
 
 def market(request):
-    return render(request, 'marketplace/market.html')
+    return render(request, 'marketplace/marketplace.html')
