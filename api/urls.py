@@ -10,4 +10,5 @@ urlpatterns = [
     path('ai/', include('ai_system.urls')),
     path('payments/', include('payments.urls')),
     path('taxi/', include('taxi.urls')),
+    path('news/', include('news.urls')),
 ]
