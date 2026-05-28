@@ -1,67 +1,97 @@
-
 <nav class="sidebar">
-
   <div class="sidebar-logo">
     <div class="logo-icon">🏙️</div>
-    <div class="logo-text">Smart City</div>
-    <div class="logo-sub">Urban Management System</div>
+    <div class="logo-text">
+      Smart City
+    </div>
+    <div class="logo-sub">
+      Urban Management System
+    </div>
   </div>
-
+  <!-- Main -->
   <div class="nav-section">
-    <div class="nav-label">Main</div>
+    <div class="nav-label">
+      Main
+    </div>
     <a href="{% url 'dashboard' %}" class="nav-item">
-      <span class="nav-icon">📊</span>Dashboard
+      <span class="nav-icon">📊</span>
+      Dashboard
     </a>
     <a href="{% url 'ai' %}" class="nav-item">
-      <span class="nav-icon">🤖</span>AI Assistant
+      <span class="nav-icon">🤖</span>
+      AI Assistant
     </a>
-
     <a href="{% url 'news' %}" class="nav-item">
-      <span class="nav-icon">📰</span>City News
-      <span class="nav-badge">5</span>
+      <span class="nav-icon">📰</span>
+      City News
+      <span class="nav-badge">
+        5
+      </span>
     </a>
   </div>
-
   <div class="nav-section">
-    <div class="nav-label">Services</div>
 
-    <a href="{% url 'complaints' %}" class="nav-item">
-      <span class="nav-icon">📋</span>Complaints
-      <span class="nav-badge">12</span>
-    </a>
-
-    <a href="{% url 'taxi' %}" class="nav-item">
-      <span class="nav-icon">🚕</span>Online Taxi
-    </a>
-
-    <a href="{% url 'market' %}" class="nav-item">
-      <span class="nav-icon">🛍️</span>City Market
-    </a>
-
-    <a href="{% url 'payment' %}" class="nav-item">
-      <span class="nav-icon">💳</span>Bill Payments
-    </a>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-label">Community</div>
-
-    <a href="{% url 'social' %}" class="nav-item">
-      <span class="nav-icon">👥</span>Social Network
-    </a>
-
-    <a href="{% url 'map' %}" class="nav-item">
-      <span class="nav-icon">🗺️</span>City Map
-    </a>
-  </div>
-
-  <div class="sidebar-user">
-    <div class="user-avatar">A</div>
-    <div>
-      <div class="user-name">Ahmad Rahimi</div>
-      <div class="user-role">Citizen</div>
+    <div class="nav-label">
+      Services
     </div>
-    <span style="margin-left:auto;font-size:16px;color:var(--text3);cursor:pointer">⚙️</span>
+    <a href="{% url 'complaints' %}" class="nav-item">
+      <span class="nav-icon">📋</span>
+      Complaints
+
+      <span class="nav-badge">
+        12
+      </span>
+    </a>
+    <a href="{% url 'taxi' %}" class="nav-item">
+      <span class="nav-icon">🚕</span>
+      Online Taxi
+    </a>
+    <a href="{% url 'market' %}" class="nav-item">
+      <span class="nav-icon">🛍️</span>
+      City Market
+    </a>
+    <a href="{% url 'payment' %}" class="nav-item">
+      <span class="nav-icon">💳</span>
+      Bill Payments
+    </a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">
+      Community
+    </div>
+    <a href="{% url 'social' %}" class="nav-item">
+      <span class="nav-icon">👥</span>
+      Social Network
+    </a>
+    <a href="{% url 'map' %}" class="nav-item">
+      <span class="nav-icon">🗺️</span>
+      City Map
+    </a>
+  </div>
+  <div class="sidebar-user">
+
+    <div class="user-avatar">
+      {{ request.user.full_name|first|upper }}
+    </div>
+    <div>
+      <div class="user-name">
+        {{ request.user.full_name }}
+      </div>
+      <div class="user-role">
+        {{ request.user.role|title }}
+      </div>
+    </div>
+    <a
+      href="{% url 'logout' %}"
+      style="
+        margin-left:auto;
+        font-size:16px;
+        color:var(--text3);
+        text-decoration:none;
+      ">
+      🚪
+    </a>
+
   </div>
 
 </nav>
