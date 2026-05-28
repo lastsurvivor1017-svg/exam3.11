@@ -24,7 +24,6 @@ class RideViewSet(viewsets.ModelViewSet):
         ride = self.get_object()
         if request.user.role != 'driver':
             return Response({"error": "Only drivers can accept rides"})
-
         ride.driver = request.user
         ride.status = 'accepted'
         ride.save()
@@ -37,9 +36,7 @@ class RideViewSet(viewsets.ModelViewSet):
             return Response({"error": "Not your ride"})
         ride.status = 'completed'
         ride.save()
-
         return Response({"message": "Ride completed"})
-
 
 def taxi_page(request):
     rides = Ride.objects.all().order_by('-created_at')
