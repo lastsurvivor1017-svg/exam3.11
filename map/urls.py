@@ -5,9 +5,7 @@ from . import views
 
 router = DefaultRouter()
 router.register('', PlaceViewSet)
-urlpatterns = router.urls
-
 
 urlpatterns = router.urls + [
-    path('map/', views.map_view, name='map')
+    path('page/', views.map_view, name='map'),
 ]
