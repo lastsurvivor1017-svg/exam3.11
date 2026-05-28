@@ -163,3 +163,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'lastsurvivor1017@gmail.com'
 EMAIL_HOST_PASSWORD = 'hshu tfrg ydnt xvvw'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+LOGIN_URL = "/auth/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/auth/"
