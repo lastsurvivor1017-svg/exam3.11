@@ -38,19 +38,27 @@ class LoginView(APIView):
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
-        user = authenticate(request, email=email, password=password)
-
+        user = authenticate(
+            request,
+            email=email,
+            password=password
+        )
         if user:
+            login(request, user)
             return Response({
                 "message": "Login successful",
                 "user": {
                     "id": user.id,
                     "email": user.email,
                     "role": user.role
-                }}, status=200)
-        return Response({"error": "Invalid credentials"}, status=400)
-    
+                }
+            })
 
-def logout_view(request):
-    logout(request)
-    return redirect('/')
+        return Response({"error": "Invalid credentials"}, status=400)
+
+
+
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({"message": "Logged out"})
