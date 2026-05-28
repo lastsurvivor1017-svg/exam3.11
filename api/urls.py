@@ -9,4 +9,5 @@ urlpatterns = [
     path('social/', include('social.urls')),
     path('ai/', include('ai_system.urls')),
     path('payments/', include('payments.urls')),
+    path('taxi/', include('taxi.urls')),
 ]

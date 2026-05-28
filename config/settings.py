@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'social',
     'map',
     'api',
+    'taxi',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
