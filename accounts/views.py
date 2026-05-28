@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from rest_framework import status
 from django.contrib.auth import login, logout, authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 
@@ -54,7 +55,8 @@ class LoginView(APIView):
                 }
             })
 
-        return Response({"error": "Invalid credentials"}, status=400)
+        refresh = RefreshToken.for_user(user)
+        return Response({"refresh": str(refresh),"access": str(refresh.access_token),})
 
 
 
