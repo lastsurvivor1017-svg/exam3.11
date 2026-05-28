@@ -25,5 +25,4 @@ class ComplaintViewSet(viewsets.ModelViewSet):
 
 def complaints_page(request):
     data = Complaint.objects.all().order_by('-created_at')
-
     return render(request, 'complaints/complaints.html', {'complaints': data})

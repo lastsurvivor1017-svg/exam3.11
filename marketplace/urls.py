@@ -13,6 +13,6 @@ router.register('orders', OrderViewSet)
 urlpatterns = router.urls
 
 
-urlpatterns = [
+urlpatterns = router.urls + [
     path('market/', views.market, name='market'),
 ]

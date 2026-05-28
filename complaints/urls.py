@@ -10,6 +10,6 @@ urlpatterns = router.urls
 from django.urls import path
 from . import views
 
-urlpatterns = [
+urlpatterns = router.urls + [
     path('', views.complaints_page, name='complaints'),
 ]
