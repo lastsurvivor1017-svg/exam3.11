@@ -27,8 +27,14 @@ class DashboardStatsView(APIView):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    users = User.objects.count()
+    complaints = Complaint.objects.count()
+    orders = Order.objects.count()
 
+    return render(request, "dashboard.html", {
+        "users": users,
+        "complaints": complaints,
+        "orders": orders,})
 def news(request):
     return render(request, 'dashboard/news.html')
 
