@@ -5,6 +5,8 @@ from .services import complaint_by_category
 from accounts.models import User
 from complaints.models import Complaint
 from marketplace.models import Order
+from django.contrib.auth.decorators import login_required
+
 
 
 class DashboardStatsView(APIView):
@@ -31,11 +33,9 @@ class DashboardStatsView(APIView):
     
 
 
-
+@login_required
 def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
-
-
 
 def news(request):
     return render(request, 'dashboard/news.html')
