@@ -39,24 +39,31 @@ class LoginView(APIView):
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
+
         user = authenticate(
             request,
             email=email,
             password=password
         )
+
         if user:
-            login(request, user)
+            refresh = RefreshToken.for_user(user)
+
             return Response({
                 "message": "Login successful",
                 "user": {
                     "id": user.id,
                     "email": user.email,
                     "role": user.role
-                }})
+                },
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+            })
 
-        refresh = RefreshToken.for_user(user)
-        return Response({"refresh": str(refresh),"access": str(refresh.access_token),})
-
+        return Response(
+            {"error": "Invalid credentials"},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
 
 
 class LogoutView(APIView):
