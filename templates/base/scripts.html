@@ -98,5 +98,81 @@ document.querySelectorAll('.category-btn').forEach(btn => {
     this.classList.add('active');
   });
 });
+async function handleLogin() {
+
+  hideAlerts();
+
+  const email =
+    document.getElementById('login-email').value.trim();
+
+  const password =
+    document.getElementById('login-password').value;
+
+  if (!email || !password) {
+
+    document.getElementById('login-error-msg').textContent =
+      'Please fill all fields';
+
+    showAlert('login-error');
+
+    return;
+  }
+
+  setLoading('login-btn', true);
+
+  try {
+
+    const res = await fetch(
+      '/api/auth/login/',
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          email,
+          password
+        })
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+
+      showAlert('login-success');
+
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 1000);
+
+    } else {
+
+      document.getElementById('login-error-msg').textContent =
+        data.error || 'Login failed';
+
+      showAlert('login-error');
+
+      setLoading('login-btn', false);
+
+      document.getElementById('login-btn').textContent =
+        'Sign In';
+    }
+
+  } catch (err) {
+
+    document.getElementById('login-error-msg').textContent =
+      'Network error';
+
+    showAlert('login-error');
+
+    setLoading('login-btn', false);
+
+    document.getElementById('login-btn').textContent =
+      'Sign In';
+  }
+}
 </script>
 
