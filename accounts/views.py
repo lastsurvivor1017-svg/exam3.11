@@ -47,9 +47,7 @@ class LoginView(APIView):
                     "id": user.id,
                     "email": user.email,
                     "role": user.role
-                }
-            }, status=200)
-
+                }}, status=200)
         return Response({"error": "Invalid credentials"}, status=400)
     
 
