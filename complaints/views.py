@@ -18,7 +18,7 @@ class ComplaintViewSet(viewsets.ModelViewSet):
 
         serializer.save(
             user=self.request.user,
-            category=analysis["category"]
+            category = analysis.get("category", "road")
         )
 
 
