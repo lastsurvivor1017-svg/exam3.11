@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('stats/', DashboardStatsView.as_view()),
     path('news/', views.news, name='news'),
-    path('taxi/', views.news, name='taxi')
+    path('taxi/', views.taxi, name='taxi')
 ]

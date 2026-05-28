@@ -17,11 +17,13 @@ class RegisterView(APIView):
         email = request.data.get("email")
         password = request.data.get("password")
         full_name = request.data.get("full_name")
+        username = request.data.get("username")
 
         if User.objects.filter(email=email).exists():
             return Response({"error": "Email already exists"}, status=400)
 
         user = User.objects.create_user(
+            username=username,
             email=email,
             password=password,
             full_name=full_name
