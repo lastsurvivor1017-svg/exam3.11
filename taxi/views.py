@@ -10,20 +10,18 @@ from .services import calculate_price
 
 
 class RideViewSet(viewsets.ModelViewSet):
-    queryset = Ride.objects.all().order_by('-created_at')
+    queryset = Ride.objects.all()
     serializer_class = RideSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        distance = float(self.request.data.get('distance_km', 1))
-        price = calculate_price(distance)
+        ride = serializer.save(user=self.request.user)
         Notification.objects.create(
             user=self.request.user,
-            title="Taxi Requested",
-            message="Your taxi request was created.",
+            title="🚕 Taxi Request Created",
+            message=f"Your ride from {ride.pickup_location} is registered.",
             notification_type="taxi"
         )
-        serializer.save(user=self.request.user,price=price)
 
     @action(detail=True, methods=['POST'])
     def accept(self, request, pk=None):

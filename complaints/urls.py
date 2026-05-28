@@ -7,5 +7,5 @@ router = DefaultRouter()
 router.register('', ComplaintViewSet)
 
 urlpatterns = router.urls + [
-    path('page/', views.complaints_page, name='complaints'),
+    path('complaints/', views.complaints_page, name='complaints_page')
 ]

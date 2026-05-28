@@ -4,8 +4,8 @@ from .views import NewsViewSet
 from . import views
 
 router = DefaultRouter()
-router.register('', NewsViewSet)
+router.register('news', NewsViewSet)
 
 urlpatterns = router.urls + [
-path('page/', views.news_page, name='news'),
+    path('news-page/', views.news_page, name='news_page')
 ]

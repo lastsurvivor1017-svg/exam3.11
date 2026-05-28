@@ -143,16 +143,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-REST_FRAMEWORK = {
 
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    )
-}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -166,7 +157,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'lastsurvivor1017@gmail.com'
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = 'hshu tfrg ydnt xvvw'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
