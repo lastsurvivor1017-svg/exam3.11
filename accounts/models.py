@@ -1,16 +1,14 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 class User(AbstractUser):
-
     ROLE_CHOICES = (
         ('citizen', 'Citizen'),
         ('driver', 'Driver'),
-        ('shop_owner', 'Shop Owner'),
         ('admin', 'Admin'),
     )
-    
-    role = models.CharField(max_length=20,choices=ROLE_CHOICES,default='citizen')
+
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='citizen')
     full_name = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=20,blank=True,null=True)
     address = models.TextField(blank=True,null=True)

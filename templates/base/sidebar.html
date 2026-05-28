@@ -71,7 +71,9 @@
   <div class="sidebar-user">
 
     <div class="user-avatar">
-      {{ request.user.full_name|first|upper }}
+      {% with name=request.user.full_name|default:"User" %}
+        {{ name|first|upper }}
+        {% endwith %}
     </div>
     <div>
       <div class="user-name">

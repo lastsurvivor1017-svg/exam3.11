@@ -11,26 +11,20 @@
 <body>
 
 {% if request.user.is_authenticated %}
-
     {% include 'base/sidebar.html' %}
-
-    <main class="main">
-
-        {% include 'base/topbar.html' %}
-
-        <div class="page-scroll">
-            {% block content %}
-            {% endblock %}
-        </div>
-
-    </main>
-
-{% else %}
-
-    {% block content %}
-    {% endblock %}
-
 {% endif %}
+
+<main class="main">
+
+    {% if request.user.is_authenticated %}
+        {% include 'base/topbar.html' %}
+    {% endif %}
+
+    <div class="page-scroll">
+        {% block content %}{% endblock %}
+    </div>
+
+</main>
 
 {% include 'base/scripts.html' %}
 
