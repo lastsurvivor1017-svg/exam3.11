@@ -3,9 +3,6 @@ from .views import ComplaintViewSet
 from django.urls import path
 from . import views
 
-router = DefaultRouter()
-router.register('', ComplaintViewSet)
-
-urlpatterns = router.urls + [
-    path('complaints/', views.complaints_page, name='complaints_page')
+urlpatterns =  [
+    path('', views.complaints_page, name='complaints'),
 ]

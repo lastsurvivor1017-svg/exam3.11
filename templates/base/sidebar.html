@@ -33,7 +33,7 @@
     <div class="nav-label">
       Services
     </div>
-    <a href="{% url 'complaints_page' %}" class="nav-item">
+    <a href="{% url 'complaints' %}" class="nav-item">
       <span class="nav-icon">📋</span>
       Complaints
 
@@ -82,17 +82,6 @@
         {{ request.user.role|title }}
       </div>
     </div>
-    <a
-      href="{% url 'logout' %}"
-      style="
-        margin-left:auto;
-        font-size:16px;
-        color:var(--text3);
-        text-decoration:none;
-      ">
-      🚪
-    </a>
-
   </div>
 
 </nav>

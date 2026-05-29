@@ -3,9 +3,8 @@ from .views import PlaceViewSet
 from django.urls import path
 from . import views
 
-router = DefaultRouter()
-router.register('', PlaceViewSet)
 
-urlpatterns = router.urls + [
-    path('page/', views.map_view, name='map'),
+
+urlpatterns =  [
+    path('', views.map_view, name='map'),
 ]
